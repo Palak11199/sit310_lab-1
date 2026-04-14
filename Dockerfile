@@ -48,17 +48,15 @@ ENV DT_REPO_PATH "${REPO_PATH}"
 ENV DT_LAUNCH_PATH "${LAUNCH_PATH}"
 ENV DT_LAUNCHER "${LAUNCHER}"
 
-<<<<<<< HEAD
 # Fix expired ROS key
 RUN rm -f /etc/apt/sources.list.d/ros-latest.list
 RUN apt-key del F42ED6FBAB17C654 || true
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key F42ED6FBAB17C654
 RUN apt-get update
-=======
 # Fix ROS GPG key
 RUN apt-key del F42ED6FBAB17C654 || true
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key F42ED6FBAB17C654
->>>>>>> e72921a (clean)
+
 # install apt dependencies
 COPY ./dependencies-apt.txt "${REPO_PATH}/"
 RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
